@@ -135,7 +135,7 @@ class App extends Component {
             type="email"
             className="form-control"
             id="beratBarang"
-            aria-describedby="emailHelp"
+            aria-describedby="beratBarang"
             placeholder="Masukan berat barang"
             onChange={e => this.setState({ berat: parseInt(e.target.value) })}
           />
