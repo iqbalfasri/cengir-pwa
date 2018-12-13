@@ -1,13 +1,13 @@
 {
-  "main.css": "/static/css/main.4dbc03b3.chunk.css",
-  "main.js": "/static/js/main.539cd9d8.chunk.js",
-  "main.js.map": "/static/js/main.539cd9d8.chunk.js.map",
-  "static/js/1.e51c5056.chunk.js": "/static/js/1.e51c5056.chunk.js",
-  "static/js/1.e51c5056.chunk.js.map": "/static/js/1.e51c5056.chunk.js.map",
-  "runtime~main.js": "/static/js/runtime~main.229c360f.js",
-  "runtime~main.js.map": "/static/js/runtime~main.229c360f.js.map",
-  "static/css/main.4dbc03b3.chunk.css.map": "/static/css/main.4dbc03b3.chunk.css.map",
-  "index.html": "/index.html",
-  "precache-manifest.6119ec7d3557d3c1b630ef1234793c62.js": "/precache-manifest.6119ec7d3557d3c1b630ef1234793c62.js",
-  "service-worker.js": "/service-worker.js"
+  "main.css": "/cengir-pwa/static/css/main.4dbc03b3.chunk.css",
+  "main.js": "/cengir-pwa/static/js/main.c4549627.chunk.js",
+  "main.js.map": "/cengir-pwa/static/js/main.c4549627.chunk.js.map",
+  "static/js/1.e51c5056.chunk.js": "/cengir-pwa/static/js/1.e51c5056.chunk.js",
+  "static/js/1.e51c5056.chunk.js.map": "/cengir-pwa/static/js/1.e51c5056.chunk.js.map",
+  "runtime~main.js": "/cengir-pwa/static/js/runtime~main.53be5fb5.js",
+  "runtime~main.js.map": "/cengir-pwa/static/js/runtime~main.53be5fb5.js.map",
+  "static/css/main.4dbc03b3.chunk.css.map": "/cengir-pwa/static/css/main.4dbc03b3.chunk.css.map",
+  "index.html": "/cengir-pwa/index.html",
+  "precache-manifest.618e4033e71a7e3ed3531d60a69bfb28.js": "/cengir-pwa/precache-manifest.618e4033e71a7e3ed3531d60a69bfb28.js",
+  "service-worker.js": "/cengir-pwa/service-worker.js"
 }
