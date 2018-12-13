@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
 import Select from "react-select";
-import AsyncSelect from "react-select/lib/Async";
+
+import { toRupiah } from "./lib/conversi";
 
 import axios from "axios";
 
@@ -23,11 +24,11 @@ class App extends Component {
     };
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     this.setState({
       isLoading: true
     });
-    await axios
+    axios
       .get(
         "https://cors-anywhere.herokuapp.com/https://api.rajaongkir.com/starter/city",
         {
@@ -54,9 +55,13 @@ class App extends Component {
   }
 
   actionCheck(e) {
-    this.setState({
-      loadingResult: true
-    });
+    // e.preventDefault();
+    this.setState(
+      {
+        loadingResult: true
+      },
+      () => window.scrollTo(0, document.body.offsetHeight)
+    );
     let dataPost = {
       origin: this.state.kotaAsal,
       destination: this.state.kotaTujuan,
@@ -76,10 +81,13 @@ class App extends Component {
       .then(res => {
         let { results } = res.data.rajaongkir;
         results.map(c => {
-          this.setState({
-            result: c,
-            loadingResult: false
-          });
+          return this.setState(
+            {
+              result: c,
+              loadingResult: false
+            },
+            () => window.scrollTo(0, document.body.offsetHeight + 1200)
+          );
         });
       })
       .catch(error => console.log(error));
@@ -88,76 +96,101 @@ class App extends Component {
   handleButton() {
     let { kotaAsal, kotaTujuan, berat } = this.state;
     if (kotaAsal.length !== 0 && kotaTujuan !== 0 && berat !== "") {
-      return "";
+      return false;
     } else {
-      return "disabled";
+      return true;
     }
   }
 
   render() {
-    console.log(this.state.result, "res");
     return (
       <div className="container">
-        <div className="header-text d-flex flex-row align-items-center justify-content-center">
-          <h1 style={{ textAlign: "center", fontWeight: "700" }}>Cek Ongkir</h1>
-          <small className="text-muted" style={{ margin: "15px 0 0" }}>
-            Ver. PWA
-          </small>
-        </div>
-        <div className="row">
-          <div
-            className="col-md-6 col-sm-6 col-xs-6"
-            style={{ margin: "15px 0 0" }}
-          >
-            <Select
-              isLoading={this.state.isLoading}
-              placeholder="Kota asal"
-              onChange={e => this.setState({ kotaAsal: e.value.toString() })}
-              options={this.state.prv}
-            />
-          </div>
-          <div
-            className="col-md-6 col-sm-6 col-xs-6"
-            style={{ margin: "15px 0 0" }}
-          >
-            <Select
-              isLoading={this.state.isLoading}
-              placeholder="Kota tujuan"
-              onChange={e => this.setState({ kotaTujuan: e.value.toString() })}
-              options={this.state.prv}
-            />
+        <div className="header-text d-flex flex-column align-items-center justify-content-center">
+          <img alt="Icon" src={require("./assets/images/icon.png")} />
+          <div className="d-flex flex-row">
+            <h1 style={{ textAlign: "center", fontWeight: "700" }}>
+              Cek Ongkir
+            </h1>
+            {/* <small className="text-muted" style={{ margin: "25px 0 0 5px" }}>
+              Ver. PWA
+            </small> */}
           </div>
         </div>
-        <br />
-        <div className="form-group">
-          <label htmlFor="beratBarang">Berat Barang</label>
-          <input
-            type="email"
-            className="form-control"
-            id="beratBarang"
-            aria-describedby="beratBarang"
-            placeholder="Masukan berat barang"
-            onChange={e => this.setState({ berat: parseInt(e.target.value) })}
-          />
-        </div>
-        <button
-          className={`btn btn-warning btn-block ${this.handleButton()}`}
-          onClick={() => this.actionCheck()}
+        <form
+          onSubmit={e => {
+            e.preventDefault();
+            this.actionCheck();
+          }}
         >
-          Cek Sekarang
-        </button>
+          <div className="row">
+            <div
+              className="col-md-6 col-sm-6 col-xs-6"
+              style={{ margin: "15px 0 0" }}
+            >
+              <Select
+                isLoading={this.state.isLoading}
+                placeholder="Kota asal"
+                onChange={e => this.setState({ kotaAsal: e.value.toString() })}
+                options={this.state.prv}
+              />
+            </div>
+            <div
+              className="col-md-6 col-sm-6 col-xs-6"
+              style={{ margin: "15px 0 0" }}
+            >
+              <Select
+                isLoading={this.state.isLoading}
+                placeholder="Kota tujuan"
+                onChange={e =>
+                  this.setState({ kotaTujuan: e.value.toString() })
+                }
+                options={this.state.prv}
+              />
+            </div>
+          </div>
+          <br />
+          <div className="form-group">
+            <label htmlFor="beratBarang">Berat Barang</label>
+            <input
+              type="text"
+              className="form-control c-input"
+              id="beratBarang"
+              aria-describedby="beratBarang"
+              placeholder="Masukan berat barang"
+              onChange={e => this.setState({ berat: parseInt(e.target.value) })}
+            />
+          </div>
+          <button
+            disabled={this.handleButton()}
+            className={`btn btn-warning btn-block`}
+            onClick={() => {
+              this.actionCheck();
+            }}
+          >
+            Cek Sekarang
+          </button>
+        </form>
         <small className="text-muted" style={{ margin: "15px 0 0" }}>
           *Harga yang keluar berdasarkan harga dari JNE
         </small>
         {this.state.loadingResult ? (
           <div className="text-center">
-            <div className="lds-ellipsis" style={{margin: '50px 0 -20px'}}>
+            <div className="lds-ellipsis" style={{ margin: "50px 0 -20px" }}>
               <div />
               <div />
               <div />
               <div />
             </div>
-            <p style={{fontSize: 12, color: '#393e46', fontWeight: '500', opacity: 0.5}}>Loading...</p>
+            <p
+              style={{
+                fontSize: 12,
+                color: "#393e46",
+                fontWeight: "500",
+                opacity: 0.5
+              }}
+            >
+              Loading...
+            </p>
           </div>
         ) : this.state.result === null ? (
           <div style={{ visibility: "visible" }} />
@@ -165,8 +198,9 @@ class App extends Component {
           <div className="result">
             <h1 style={{ fontWeight: "700", marginBottom: 10 }}>Result</h1>
             <div className="row">
-              {this.state.result.costs.map(costs => (
+              {this.state.result.costs.map((costs, i) => (
                 <div
+                  key={i}
                   className={
                     this.state.result.costs.length === 2
                       ? "col-md-6"
@@ -175,11 +209,10 @@ class App extends Component {
                 >
                   <div className="result-content text-left">
                     <h2>{costs.service}</h2>
-                    {costs.cost.map(value => {
-                      console.log(value, "harga");
+                    {costs.cost.map((value, i) => {
                       return (
-                        <div>
-                          <h4>Rp {value.value}</h4>
+                        <div key={i}>
+                          <h4>Rp {toRupiah(value.value)}</h4>
                           <p style={{ opacity: 0.5 }}>
                             Estimasi waktu {value.etd} hari
                           </p>
