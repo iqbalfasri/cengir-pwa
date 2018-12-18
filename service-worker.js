@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/cengir-pwa/precache-manifest.618e4033e71a7e3ed3531d60a69bfb28.js"
+  "/cengir-pwa/precache-manifest.f5018765f348e0a88f90a2774126aacf.js"
 );
 
 workbox.clientsClaim();

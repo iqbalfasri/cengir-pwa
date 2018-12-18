@@ -1,13 +1,13 @@
 {
   "main.css": "/cengir-pwa/static/css/main.4dbc03b3.chunk.css",
-  "main.js": "/cengir-pwa/static/js/main.c4549627.chunk.js",
-  "main.js.map": "/cengir-pwa/static/js/main.c4549627.chunk.js.map",
-  "static/js/1.e51c5056.chunk.js": "/cengir-pwa/static/js/1.e51c5056.chunk.js",
-  "static/js/1.e51c5056.chunk.js.map": "/cengir-pwa/static/js/1.e51c5056.chunk.js.map",
+  "main.js": "/cengir-pwa/static/js/main.8277e02c.chunk.js",
+  "main.js.map": "/cengir-pwa/static/js/main.8277e02c.chunk.js.map",
+  "static/js/1.6bc5d194.chunk.js": "/cengir-pwa/static/js/1.6bc5d194.chunk.js",
+  "static/js/1.6bc5d194.chunk.js.map": "/cengir-pwa/static/js/1.6bc5d194.chunk.js.map",
   "runtime~main.js": "/cengir-pwa/static/js/runtime~main.53be5fb5.js",
   "runtime~main.js.map": "/cengir-pwa/static/js/runtime~main.53be5fb5.js.map",
   "static/css/main.4dbc03b3.chunk.css.map": "/cengir-pwa/static/css/main.4dbc03b3.chunk.css.map",
   "index.html": "/cengir-pwa/index.html",
-  "precache-manifest.618e4033e71a7e3ed3531d60a69bfb28.js": "/cengir-pwa/precache-manifest.618e4033e71a7e3ed3531d60a69bfb28.js",
+  "precache-manifest.f5018765f348e0a88f90a2774126aacf.js": "/cengir-pwa/precache-manifest.f5018765f348e0a88f90a2774126aacf.js",
   "service-worker.js": "/cengir-pwa/service-worker.js"
 }
