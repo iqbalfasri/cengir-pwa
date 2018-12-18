@@ -2,10 +2,8 @@ import React, { Component } from "react";
 import "./App.css";
 import Select from "react-select";
 
-import { toRupiah } from "./lib/conversi";
+import toRupiah from "./lib/conversi";
 import { Consumer } from "./lib/context";
-
-import axios from "axios";
 
 class App extends Component {
   constructor() {
@@ -32,12 +30,6 @@ class App extends Component {
       <Consumer>
         {ctx => {
           let { state, actions } = ctx;
-          let data = {
-            origin: this.state.kotaAsal,
-            destination: this.state.kotaTujuan,
-            weight: this.state.berat,
-            courier: "jne"
-          };
           return (
             <div className="container">
               <div className="header-text d-flex flex-column align-items-center justify-content-center">
@@ -51,7 +43,12 @@ class App extends Component {
               <form
                 onSubmit={e => {
                   e.preventDefault();
-                  actions.checkOngkir(data);
+                  actions.checkOngkir({
+                    origin: this.state.kotaAsal,
+                    destination: this.state.kotaTujuan,
+                    weight: this.state.berat,
+                    courier: "jne"
+                  });
                 }}
               >
                 <div className="row">
