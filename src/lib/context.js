@@ -8,15 +8,9 @@ class Provider extends Component {
     super();
 
     this.state = {
-      province: [],
       prv: [],
-      selectedProv: "",
       isLoading: false,
-      kotaAsal: "",
-      kotaTujuan: "",
-      berat: "",
       result: null,
-      disabled: true,
       loadingResult: false
     };
   }

@@ -139,11 +139,7 @@ class App extends Component {
                     {state.result.costs.map((costs, i) => (
                       <div
                         key={i}
-                        className={
-                          state.result.costs.length === 2
-                            ? "col-md-6"
-                            : "col-md-4"
-                        }
+                        className={ state.result.costs.length === 2 ? "col-md-6" : "col-md-4" }
                       >
                         <div className="result-content text-left">
                           <h2>{costs.service}</h2>
