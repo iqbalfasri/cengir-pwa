@@ -52,11 +52,8 @@ class Provider extends Component {
   }
 
   checkOngkir = data => {
-    this.setState(
-      {
-        loadingResult: true
-      },
-      () => window.scrollTo(0, document.body.offsetHeight)
+    this.setState({ loadingResult: true }, () =>
+      window.scrollTo(0, document.body.offsetHeight)
     );
 
     axios({
@@ -71,12 +68,8 @@ class Provider extends Component {
       .then(res => {
         let { results } = res.data.rajaongkir;
         results.map(c => {
-          return this.setState(
-            {
-              result: c,
-              loadingResult: false
-            },
-            () => window.scrollTo(0, document.body.offsetHeight + 1200)
+          return this.setState({ result: c, loadingResult: false }, () =>
+            window.scrollTo(0, document.body.offsetHeight + 1200)
           );
         });
       })
